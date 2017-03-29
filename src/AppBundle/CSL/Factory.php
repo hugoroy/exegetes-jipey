@@ -13,9 +13,13 @@ class Factory
 {
     public static function create(\DOMElement $dom_node, CiteProc $citeproc = null)
     {
-        $class_name = __NAMESPACE__.'\\'. str_replace('-', '', $dom_node->nodeName);
-        if (class_exists($class_name)) {
-            return new $class_name($dom_node, $citeproc);
+        $className = __NAMESPACE__ . '\\' . implode('', array_map(function ($v) {
+            return ucfirst($v);
+        }, explode('-', $dom_node->nodeName)));
+
+        //$class_name = str_replace('-', '', $dom_node->nodeName);
+        if (class_exists($className)) {
+            return new $className($dom_node, $citeproc);
         } else {
             return null;
         }
