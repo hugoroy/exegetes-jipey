@@ -12,4 +12,14 @@ namespace AppBundle\Entity;
 class Date
 {
 
+    /**
+     * @var array
+     */
+    protected $dateParts;
+
+    /**
+     * @var string
+     */
+    protected $literal;
+
 }
