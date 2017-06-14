@@ -53,380 +53,435 @@ class Reference
      *     "treaty",
      *     "webpage"})
      */
-    protected $type;
+    public $type;
 
     /**
      * @var mixed
      * @Assert\NotNull()
      */
-    protected $id;
+    public $id;
 
     /**
      * @var array
      */
-    protected $categories;
+    public $categories;
 
     /**
      * @var string
      */
-    protected $language;
+    public $language;
 
     /**
      * @var string
      */
-    protected $journalAbbreviation;
+    public $journalAbbreviation;
 
     /**
      * @var string
      */
-    protected $shortTitle;
+    public $shortTitle;
 
     /**
      * @var Name[]
      */
-    protected $author;
+    public $author;
 
     /**
      * @var Name[]
      */
-    protected $collectionEditor;
+    public $collectionEditor;
     /**
      * @var Name[]
      */
-    protected $composer;
+    public $composer;
     /**
      * @var Name[]
      */
-    protected $containerAuthor;
+    public $containerAuthor;
     /**
      * @var Name[]
      */
-    protected $director;
+    public $director;
     /**
      * @var Name[]
      */
-    protected $editor;
+    public $editor;
     /**
      * @var Name[]
      */
-    protected $editorialDirector;
+    public $editorialDirector;
     /**
      * @var Name[]
      */
-    protected $interviewer;
+    public $interviewer;
     /**
      * @var Name[]
      */
-    protected $illustrator;
+    public $illustrator;
     /**
      * @var Name[]
      */
-    protected $originalAuthor;
+    public $originalAuthor;
     /**
      * @var Name[]
      */
-    protected $recipient;
+    public $recipient;
     /**
      * @var Name[]
      */
-    protected $reviewedAuthor;
+    public $reviewedAuthor;
     /**
      * @var Name[]
      */
-    protected $translator;
+    public $translator;
 
     /**
      * @var Date
      */
-    protected $accessed;
+    public $accessed;
 
     /**
      * @var Date
      */
-    protected $container;
+    public $container;
 
     /**
      * @var Date
      */
-    protected $eventDate;
+    public $eventDate;
 
     /**
      * @var Date
      */
-    protected $issued;
+    public $issued;
 
     /**
      * @var Date
      */
-    protected $originalDate;
+    public $originalDate;
 
     /**
      * @var Date
      */
-    protected $submitted;
+    public $submitted;
 
     /**
      * @var string
      */
-    protected $abstract;
+    public $abstract;
 
     /**
      * @var string
      */
-    protected $annote;
+    public $annote;
 
     /**
      * @var string
      */
-    protected $archive;
+    public $archive;
 
     /**
      * @var string
      */
-    protected $archiveLocation;
+    public $archiveLocation;
 
     /**
      * @var string
      */
-    protected $archivePlace;
+    public $archivePlace;
 
     /**
      * @var string
      */
-    protected $authority;
+    public $authority;
 
     /**
      * @var string
      */
-    protected $callNumber;
+    public $callNumber;
 
     /**
      * @var string
      */
-    protected $chapterNumber;
+    public $chapterNumber;
 
     /**
      * @var string
      */
-    protected $citationNumber;
+    public $citationNumber;
 
     /**
      * @var string
      */
-    protected $citationLabel;
+    public $citationLabel;
 
     /**
      * @var string
      */
-    protected $collectionNumber;
+    public $collectionNumber;
 
     /**
      * @var string
      */
-    protected $collectionTitle;
+    public $collectionTitle;
 
     /**
      * @var string
      */
-    protected $containerTitle;
+    public $containerTitle;
 
     /**
      * @var string
      */
-    protected $containerTitlePart;
+    public $containerTitlePart;
 
     /**
      * @var string
      */
-    protected $dimensions;
+    public $dimensions;
 
     /**
      * @var string
      */
-    protected $DOI;
+    public $DOI;
 
     /**
      * @var string
      */
-    protected $edition;
+    public $edition;
 
     /**
      * @var string
      */
-    protected $event;
+    public $event;
 
     /**
      * @var string
      */
-    protected $eventPlace;
+    public $eventPlace;
 
     /**
      * @var string
      */
-    protected $firstReferenceNoteNumber;
+    public $firstReferenceNoteNumber;
 
     /**
      * @var string
      */
-    protected $genre;
+    public $genre;
 
     /**
      * @var string
      */
-    protected $ISBN;
+    public $ISBN;
 
     /**
      * @var string
      */
-    protected $ISSN;
+    public $ISSN;
 
     /**
      * @var string
      */
-    protected $issue;
+    public $issue;
 
     /**
      * @var string
      */
-    protected $jurisdiction;
+    public $jurisdiction;
 
     /**
      * @var string
      */
-    protected $keyword;
+    public $keyword;
 
     /**
      * @var string
      */
-    protected $locator;
+    public $locator;
 
     /**
      * @var string
      */
-    protected $medium;
+    public $medium;
 
     /**
      * @var string
      */
-    protected $note;
+    public $note;
 
     /**
      * @var string
      */
-    protected $number;
+    public $number;
 
     /**
      * @var string
      */
-    protected $numberOfPages;
+    public $numberOfPages;
 
     /**
      * @var string
      */
-    protected $numberOfVolumes;
+    public $numberOfVolumes;
 
     /**
      * @var string
      */
-    protected $originalPublisher;
+    public $originalPublisher;
 
     /**
      * @var string
      */
-    protected $originalPublisherPlace;
+    public $originalPublisherPlace;
 
     /**
      * @var string
      */
-    protected $originalTitle;
+    public $originalTitle;
 
     /**
      * @var string
      */
-    protected $page;
+    public $page;
 
     /**
      * @var string
      */
-    protected $pageFirst;
+    public $pageFirst;
 
     /**
      * @var string
      */
-    protected $PMCID;
+    public $PMCID;
 
     /**
      * @var string
      */
-    protected $PMID;
+    public $PMID;
 
     /**
      * @var string
      */
-    protected $publisher;
+    public $publisher;
 
     /**
      * @var string
      */
-    protected $publisherPlace;
+    public $publisherPlace;
 
     /**
      * @var string
      */
-    protected $references;
+    public $references;
 
     /**
      * @var string
      */
-    protected $reviewedTitle;
+    public $reviewedTitle;
 
     /**
      * @var string
      */
-    protected $scale;
+    public $scale;
 
     /**
      * @var string
      */
-    protected $section;
+    public $section;
 
     /**
      * @var string
      */
-    protected $source;
+    public $source;
 
     /**
      * @var string
      */
-    protected $status;
+    public $status;
 
     /**
      * @var string
      */
-    protected $title;
+    public $title;
 
     /**
      * @var string
      */
-    protected $titleShort;
+    public $titleShort;
 
     /**
      * @var string
      */
-    protected $URL;
+    public $URL;
 
     /**
      * @var string
      */
-    protected $version;
+    public $version;
 
     /**
      * @var string
      */
-    protected $volume;
+    public $volume;
 
     /**
      * @var string
      */
-    protected $yearSuffix;
+    public $yearSuffix;
+
+    /*
+     * None CSL fields
+     */
+
+    /**
+     * @var string
+     */
+    public $ECLI;
+
+    /**
+     * @var string
+     */
+    public $comments;
+
+    public static function getTypeChoices()
+    {
+        return [
+            "article",
+            "article-journal",
+            "article-magazine",
+            "article-newspaper",
+            "bill",
+            "book",
+            "broadcast",
+            "chapter",
+            "dataset",
+            "entry",
+            "entry-dictionary",
+            "entry-encyclopedia",
+            "figure",
+            "graphic",
+            "interview",
+            "legal_case",
+            "legislation",
+            "manuscript",
+            "map",
+            "motion_picture",
+            "musical_score",
+            "pamphlet",
+            "paper-conference",
+            "patent",
+            "personal_communication",
+            "post",
+            "post-weblog",
+            "report",
+            "review",
+            "review-book",
+            "song",
+            "speech",
+            "thesis",
+            "treaty",
+            "webpage",
+        ];
+    }
 }

@@ -15,45 +15,45 @@ class Name
     /**
      * @var string
      */
-    protected $family;
+    public $family;
 
     /**
      * @var string
      */
-    protected $given;
+    public $given;
 
     /**
      * @var string
      */
-    protected $doppingParticule;
+    public $doppingParticule;
 
     /**
      * @var string
      */
-    protected $nonDroppingParticule;
+    public $nonDroppingParticule;
 
     /**
      * @var string
      */
-    protected $suffix;
+    public $suffix;
 
     /**
      * @var string|int|bool
      */
-    protected $commaSuffix;
+    public $commaSuffix;
 
     /**
      * @var string|int|bool
      */
-    protected $staticOrdering;
+    public $staticOrdering;
 
     /**
      * @var string
      */
-    protected $literal;
+    public $literal;
 
     /**
      * @var string|int|bool
      */
-    protected $parseNames;
+    public $parseNames;
 }

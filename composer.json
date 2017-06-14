@@ -29,7 +29,10 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
-        "hasbridge/json-schema-validator": "^0.2.0"
+        "hasbridge/json-schema-validator": "^0.2.0",
+        "seboettg/citeproc-php": "^2.0",
+        "phpdocumentor/reflection-docblock": "^3.1",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -44,11 +47,17 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
+        "csl-vendors": [
+            "vendor/seboettg/citeproc-php/install.sh styles-distribution",
+            "vendor/seboettg/citeproc-php/install.sh locales"
+        ],
         "post-install-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "@csl-vendors"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "@csl-vendors"
         ]
     },
     "extra": {
@@ -62,5 +71,11 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": null
-    }
+    },
+    "repository": [
+        {
+            "type": "cvs",
+            "url": "/Users/loconox/PhpstormProjects/citeproc-php"
+        }
+    ]
 }

@@ -15,11 +15,11 @@ class Date
     /**
      * @var array
      */
-    protected $dateParts;
+    public $dateParts;
 
     /**
      * @var string
      */
-    protected $literal;
+    public $literal;
 
 }

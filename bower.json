@@ -1,0 +1,22 @@
+{
+  "name": "exegetes-doc-web",
+  "authors": [
+    "loconox <contact@jeremielibeau.fr>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/Resources/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "datatables": "^1.10.15"
+  }
+}

@@ -72,49 +72,46 @@ class CiteProc
         }
     }
 
-    function init($csl, $lang)
+    function init($csl_doc, $lang)
     {
         // define field values appropriate to your data in the Mapper class and un-comment the next line.
         $this->mapper = new Mapper();
-        $this->quash = array();
-
-        $csl_doc = new \DOMDocument();
-
-        if ($csl_doc->loadXML($csl)) {
-
-            $style_nodes = $csl_doc->getElementsByTagName('style');
-            if ($style_nodes) {
-                foreach ($style_nodes as $style) {
-                    $this->style = new Style($style);
-                }
-            }
-
-            $info_nodes = $csl_doc->getElementsByTagName('info');
-            if ($info_nodes) {
-                foreach ($info_nodes as $info) {
-                    $this->info = new Info($info);
-                }
-            }
-
-            $this->locale = new Locale($lang);
-            $this->locale->set_style_locale($csl_doc);
+        $this->quash  = array();
 
 
-            $macro_nodes = $csl_doc->getElementsByTagName('macro');
-            if ($macro_nodes) {
-                $this->macros = new Macros($macro_nodes, $this);
-            }
-
-            $citation_nodes = $csl_doc->getElementsByTagName('citation');
-            foreach ($citation_nodes as $citation) {
-                $this->citation = new Citation($citation, $this);
-            }
-
-            $bibliography_nodes = $csl_doc->getElementsByTagName('bibliography');
-            foreach ($bibliography_nodes as $bibliography) {
-                $this->bibliography = new Bibliography($bibliography, $this);
+        $style_nodes = $csl_doc['style'];
+        if ($style_nodes) {
+            foreach ($style_nodes as $style) {
+                $this->style = new Style($style);
             }
         }
+
+        $info_nodes = $csl_doc['info'];
+        if ($info_nodes) {
+            foreach ($info_nodes as $info) {
+                $this->info = new Info($info);
+            }
+        }
+
+        $this->locale = new Locale($lang);
+        $this->locale->set_style_locale($csl_doc);
+
+
+        $macro_nodes = $csl_doc['macro'];
+        if ($macro_nodes) {
+            $this->macros = new Macros($macro_nodes, $this);
+        }
+
+        $citation_nodes = $csl_doc['citation'];
+        foreach ($citation_nodes as $citation) {
+            $this->citation = new Citation($citation, $this);
+        }
+
+        $bibliography_nodes = $csl_doc['bibliography'];
+        foreach ($bibliography_nodes as $bibliography) {
+            $this->bibliography = new Bibliography($bibliography, $this);
+        }
+
     }
 
     function render($data, $mode = null)
