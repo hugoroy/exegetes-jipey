@@ -45,8 +45,9 @@ class TestCommand extends ContainerAwareCommand
             new YamlEncoder(
                 null,
                 null,
-                ['yaml_flags'  => Yaml::PARSE_OBJECT_FOR_MAP,
-                 'yaml_inline' => 2,
+                [
+                    'yaml_flags'  => Yaml::PARSE_OBJECT_FOR_MAP,
+                    'yaml_inline' => 2,
                 ]
             ),
         ];
@@ -54,8 +55,9 @@ class TestCommand extends ContainerAwareCommand
         $serializer = new Serializer($normalizers, $encoders);
         $data       = $serializer->deserialize($in, 'AppBundle\\Entity\\References', 'yaml');
         $out        = $serializer->serialize($data, 'yaml');
-        file_put_contents($root.'/../result.yml', $out);
-        var_dump($out === $in);
+        file_put_contents($root.'/../data.yml', $out);
+        $referenceManager = $container->get('app.manager.reference');
+        $all = $referenceManager->findAll();
 
         return;
         $data = Yaml::parse(file_get_contents($filename), Yaml::PARSE_OBJECT_FOR_MAP);

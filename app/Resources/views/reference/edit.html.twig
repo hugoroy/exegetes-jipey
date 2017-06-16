@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            {#{{ form(form) }}#}
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <button type="submit" class="btn-success btn">
+                        Editer
+                    </button>
+                    <button class="btn-danger btn reference-delete" data-id="{{ reference.id }}">
+                        Supprimer
+                    </button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-md-12">
+            <a href="{{ path('list') }}" class="btn btn-default">Retour</a>
+        </div>
+    </div>
+{% endblock body %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+        $('.reference-delete').on('click', function (e) {
+            e.preventDefault();
+
+            var id = $(this).data('id');
+            if (window.confirm("Êtes vous sur de vouloir supprimer référence '"+id+"' ?")) {
+                $.ajax('{{ path('delete', {'id': reference.id}) }}', {
+                    method: 'DELETE'
+                }).done(function (response) {
+                    window.location = response.redirect;
+                });
+            }
+        })
+    </script>
+{% endblock javascripts %}

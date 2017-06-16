@@ -50,8 +50,8 @@ module.exports = function (grunt) {
                     'web/assets/js/main.js': [
                         'app/Resources/lib/jquery/dist/jquery.js',
                         'app/Resources/lib/bootstrap-sass/assets/javascripts/bootstrap.js',
-                        'app/Resources/lib/datatables/media/js/jquery.dataTables.js',
-                        'app/Resources/lib/datatables/media/js/dataTables.boostrap.js'
+                        'app/Resources/lib/datatables.net/js/jquery.dataTables.min.js',
+                        'app/Resources/lib/datatables.net-bs/js/dataTables.bootstrap.js '
                     ]
                 }
             }

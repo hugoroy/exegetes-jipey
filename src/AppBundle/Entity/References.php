@@ -9,10 +9,27 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class References
 {
     /**
+     * This is a hack for serialization, because references are stored into elements attribute
      * @var Reference[]
      */
-    public $references;
+    private $references;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getReferences()
+    {
+        return $this->references;
+    }
+
+
+    public function setReferences($collection)
+    {
+        $this->references = new ArrayCollection($collection);
+    }
 }

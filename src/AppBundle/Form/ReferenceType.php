@@ -27,7 +27,7 @@ class ReferenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', ChoiceType::class, ['choices' => $this->getTypeChoices(), 'data' => 'legal_case'])
+            ->add('type', ChoiceType::class, ['choices' => $this->getTypeChoices()])
             ->add('id')
             ->add('authority')
             ->add('section')
@@ -38,7 +38,6 @@ class ReferenceType extends AbstractType
             ->add('ECLI', null, ['label' => 'ECLI'])
             ->add('URL', UrlType::class, ['label' => 'URL', 'required' => false])
             ->add('comments')
-            ->add('Envoyer', SubmitType::class)
         ;
     }
 

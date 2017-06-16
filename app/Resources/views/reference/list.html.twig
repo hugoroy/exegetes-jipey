@@ -2,13 +2,8 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-6">
-            {{ form(form) }}
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-12">
-            <table class="table table-striped table-references">
+            <table class="table table-striped table-hover table-references">
                 <thead>
                 <tr>
                     <th>Type</th>
@@ -20,7 +15,7 @@
                 </thead>
                 <tbody>
                 {% for reference in references %}
-                    <tr>
+                    <tr data-url="{{ path('edit', {'id': reference.id|escape('url')}) }}">
                         <td>{{ reference.type }}</td>
                         <td>{{ reference.id }}</td>
                         <td>{{ reference.authority }}</td>
@@ -31,13 +26,23 @@
                 </tbody>
             </table>
         </div>
+        <div class="col-md-12">
+            <a href="{{ path('create') }}" class="btn btn-success">Créer</a>
+            <a href="{{ asset('references.yml') }}" class="btn btn-default">Télécharger references.yml</a>
+        </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script type="text/javascript">
         $(document).ready( function () {
-            $('.table-references').DataTable();
+            $('.table-references').DataTable({
+                drawCallback: function () {
+                    $('.table-references tbody tr').on('click', function() {
+                        window.location = $(this).data('url');
+                    });
+                }
+            });
         } );
     </script>
 {% endblock %}

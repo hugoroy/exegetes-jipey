@@ -56,377 +56,377 @@ class Reference
     public $type;
 
     /**
-     * @var mixed
+     * @var string
      * @Assert\NotNull()
      */
     public $id;
 
     /**
-     * @var array
+     * @var array|null
      */
     public $categories;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $language;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $journalAbbreviation;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $shortTitle;
 
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $author;
 
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $collectionEditor;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $composer;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $containerAuthor;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $director;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $editor;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $editorialDirector;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $interviewer;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $illustrator;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $originalAuthor;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $recipient;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $reviewedAuthor;
     /**
-     * @var Name[]
+     * @var Name[]|null
      */
     public $translator;
 
     /**
-     * @var Date
+     * @var Date|null
      */
     public $accessed;
 
     /**
-     * @var Date
+     * @var Date|null
      */
     public $container;
 
     /**
-     * @var Date
+     * @var Date|null
      */
     public $eventDate;
 
     /**
-     * @var Date
+     * @var Date|null
      */
     public $issued;
 
     /**
-     * @var Date
+     * @var Date|null
      */
     public $originalDate;
 
     /**
-     * @var Date
+     * @var Date|null
      */
     public $submitted;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $abstract;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $annote;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $archive;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $archiveLocation;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $archivePlace;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $authority;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $callNumber;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $chapterNumber;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $citationNumber;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $citationLabel;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $collectionNumber;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $collectionTitle;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $containerTitle;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $containerTitlePart;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $dimensions;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $DOI;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $edition;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $event;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $eventPlace;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $firstReferenceNoteNumber;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $genre;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $ISBN;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $ISSN;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $issue;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $jurisdiction;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $keyword;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $locator;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $medium;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $note;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $number;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $numberOfPages;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $numberOfVolumes;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $originalPublisher;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $originalPublisherPlace;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $originalTitle;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $page;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $pageFirst;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $PMCID;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $PMID;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $publisher;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $publisherPlace;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $references;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $reviewedTitle;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $scale;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $section;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $source;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $status;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $title;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $titleShort;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $URL;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $version;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $volume;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $yearSuffix;
 
@@ -435,14 +435,20 @@ class Reference
      */
 
     /**
-     * @var string
+     * @var string|null
      */
     public $ECLI;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $comments;
+
+    public function __construct()
+    {
+        $this->type = 'legal_case';
+        $this->issued = new \DateTime('now');
+    }
 
     public static function getTypeChoices()
     {

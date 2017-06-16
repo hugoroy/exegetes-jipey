@@ -18,4 +18,4 @@ services:
     app.manager.reference:
         class: AppBundle\Entity\ReferenceManger
         arguments:
-            - "%kernel.root_dir%/data/references.yaml"
+            - "%kernel.root_dir%/../web/references.yml"
