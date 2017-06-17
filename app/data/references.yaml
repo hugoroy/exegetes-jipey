@@ -831,28 +831,6 @@ references:
   title-short: Simonet
   number: Rec. p. 314
 - type: legal_case
-  id: cetatSimonet
-  authority: Conseil d’État
-  section: Sect.
-  issued: 
-    year: 1957
-    month: 05
-    day: 17
-  title: Simonet
-  title-short: Simonet
-  number: Rec. p. 314
-- type: legal_case
-  id: cetatSimonet
-  authority: Conseil d’État
-  section: Sect.
-  issued: 
-    year: 1957
-    month: 05
-    day: 17
-  title: Simonet
-  title-short: Simonet
-  number: Rec. p. 314
-- type: legal_case
   id: cconst2011150
   authority: Conseil constit.
   section: ''
@@ -941,17 +919,6 @@ references:
   title: De Souza Ribeiro c. France
   title-short: De Souza Ribeiro c. France
   number: n^o^ 22689/07
-- type: legal_case
-  id: cjceJohnston
-  authority: CJCE
-  section: ''
-  issued:
-    year: 1986
-    month: 05
-    day: 15
-  title: "Marguerite Johnson"
-  title-short: Johnston
-  number: 222/84
 - type: legal_case
   id: cjueRundfunk
   authority: CJUE

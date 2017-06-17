@@ -11,23 +11,54 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class ReferenceController
+ * @package AppBundle\Controller
+ * @Route(path="/references")
+ */
 class ReferenceController extends Controller
 {
     /**
-     * @Route("/", name="list")
+     * @Route(".{_format}", name="list", defaults={"_format": "html"}, requirements={"format": "html|yml|yaml"})
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
-        $referenceManager = $this->get('app.manager.reference');
-        $references       = $referenceManager->findAll();
+        $format = $request->get("_format");
+        switch ($format) {
+            case 'yml':
+            case 'yaml':
+                $referenceManager = $this->get('doctrine.orm.entity_manager')
+                    ->getRepository('AppBundle:Reference');
+                $yml = $referenceManager->dumpYAML();
 
-        return $this->render(
-            ':reference:list.html.twig',
-            [
-                'references' => $references,
-            ]
-        );
+                return new Response(
+                    $yml,
+                    Response::HTTP_OK,
+                    ['Content-Type' => 'application/yaml']
+                );
+                break;
+            default:
+                $referenceManager = $this->get('doctrine.orm.entity_manager')
+                    ->getRepository('AppBundle:Reference');
+                $references = $referenceManager->findAll();
+
+                return $this->render(
+                    ':reference:list.html.twig',
+                    [
+                        'references' => $references,
+                    ]
+                );
+        }
+    }
+
+    /**
+     * @Route("/{id}.{_format}", name="show", defaults={"_format": "html"}, requirements={"format": "html|yml|yaml|md"})
+     */
+    public function showAction(Request $request)
+    {
+
     }
 
     /**
@@ -39,13 +70,17 @@ class ReferenceController extends Controller
     public function createAction(Request $request)
     {
         $reference = new Reference();
-        $form      = $this->createForm(ReferenceType::class, $reference, ['method' => 'PUT']);
+        $form = $this->createForm(
+            ReferenceType::class,
+            $reference,
+            ['method' => 'PUT']
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $referenceManager = $this->get('app.manager.reference');
+            $referenceManager = $this->get('doctrine.orm.entity_manager')
+                ->getRepository('AppBundle:Reference');
             $referenceManager->persist($reference);
-            $referenceManager->flush();
 
             return new RedirectResponse($this->generateUrl('list'));
         }
@@ -66,15 +101,19 @@ class ReferenceController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $id               = rawurldecode($id);
-        $referenceManager = $this->get('app.manager.reference');
-        $reference        = $referenceManager->find($id);
-        $form             = $this->createForm(ReferenceType::class, $reference, ['method' => 'PATCH']);
+        $id = rawurldecode($id);
+        $referenceManager = $this->get('doctrine.orm.entity_manager')
+            ->getRepository('AppBundle:Reference');
+        $reference = $referenceManager->find($id);
+        $form = $this->createForm(
+            ReferenceType::class,
+            $reference,
+            ['method' => 'PATCH']
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $referenceManager->persist($reference);
-            $referenceManager->flush();
 
             return new RedirectResponse($this->generateUrl('list'));
         }
@@ -96,17 +135,20 @@ class ReferenceController extends Controller
      */
     public function deleteAction($id)
     {
-        $id               = rawurldecode($id);
-        $referenceManager = $this->get('app.manager.reference');
-        $reference        = $referenceManager->find($id);
+        $id = rawurldecode($id);
+        $referenceManager = $this->get('doctrine.orm.entity_manager')
+            ->getRepository('AppBundle:Reference');
+        $reference = $referenceManager->find($id);
 
-        if ( ! $reference) {
+        if (!$reference) {
             throw $this->createNotFoundException();
         }
         $referenceManager->remove($reference);
-        $referenceManager->flush();
 
-        $response = ['status' => 'ok', 'redirect' => $this->generateUrl('list')];
+        $response = [
+            'status' => 'ok',
+            'redirect' => $this->generateUrl('list'),
+        ];
 
         return new JsonResponse($response);
     }

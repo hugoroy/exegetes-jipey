@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-12">
             <a href="{{ path('create') }}" class="btn btn-success">Créer</a>
-            <a href="{{ asset('references.yml') }}" class="btn btn-default">Télécharger references.yml</a>
+            <a href="{{ path('list', {'_format': 'yml'}) }}" class="btn btn-default">Télécharger references.yml</a>
         </div>
     </div>
 {% endblock %}

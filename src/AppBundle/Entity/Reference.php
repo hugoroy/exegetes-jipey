@@ -9,8 +9,16 @@
 namespace AppBundle\Entity;
 
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class Reference
+ * @package AppBundle\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\ReferenceManger")
+ * @UniqueEntity(fields={"id"})
+ */
 class Reference
 {
     /**
@@ -52,12 +60,15 @@ class Reference
      *     "thesis",
      *     "treaty",
      *     "webpage"})
+     * @ORM\Column(type="string")
      */
     public $type;
 
     /**
      * @var string
      * @Assert\NotNull()
+     * @ORM\Column(type="string")
+     * @ORM\Id()
      */
     public $id;
 
@@ -151,7 +162,8 @@ class Reference
     public $eventDate;
 
     /**
-     * @var Date|null
+     * @var Date
+     * @ORM\Column(type="date")
      */
     public $issued;
 
@@ -192,6 +204,7 @@ class Reference
 
     /**
      * @var string|null
+     * @ORM\Column(type="string", nullable=true)
      */
     public $authority;
 
@@ -312,6 +325,7 @@ class Reference
 
     /**
      * @var string|null
+     * @ORM\Column(type="string", nullable=true)
      */
     public $number;
 
@@ -387,6 +401,7 @@ class Reference
 
     /**
      * @var string|null
+     * @ORM\Column(type="string", nullable=true)
      */
     public $section;
 
@@ -402,16 +417,19 @@ class Reference
 
     /**
      * @var string|null
+     * @ORM\Column(type="text", nullable=true)
      */
     public $title;
 
     /**
      * @var string|null
+     * @ORM\Column(type="text", nullable=true)
      */
     public $titleShort;
 
     /**
      * @var string|null
+     * @ORM\Column(type="string", nullable=true)
      */
     public $URL;
 
@@ -436,11 +454,13 @@ class Reference
 
     /**
      * @var string|null
+     * @ORM\Column(type="string", nullable=true)
      */
     public $ECLI;
 
     /**
      * @var string|null
+     * @ORM\Column(type="text", nullable=true)
      */
     public $comments;
 

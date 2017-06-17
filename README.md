@@ -10,6 +10,7 @@ A Symfony project created on March 28, 2017, 3:50 pm.
 
 * php70
 * php70-yaml
+* mysql
 
 ## Development
 
@@ -22,4 +23,6 @@ A Symfony project created on March 28, 2017, 3:50 pm.
 
 ```
 composer install
+bin/console doctrine:database:create
+bin/console doctrine:schema:update --force
 ```

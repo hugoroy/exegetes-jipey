@@ -15,7 +15,3 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
-    app.manager.reference:
-        class: AppBundle\Entity\ReferenceManger
-        arguments:
-            - "%kernel.root_dir%/../web/references.yml"

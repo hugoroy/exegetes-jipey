@@ -11,6 +11,8 @@ namespace AppBundle\Entity;
 
 use AppBundle\Serializer\DateDenormalizer;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
@@ -18,7 +20,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Yaml\Yaml;
 
-class ReferenceManger
+class ReferenceManger extends EntityRepository
 {
     /**
      * @var Serializer
@@ -26,17 +28,13 @@ class ReferenceManger
     protected $serializer;
 
     /**
-     * @var string
-     */
-    protected $storageFilename;
-
-    /**
      * @var Reference[]
      */
     protected $references;
 
-    public function __construct($storageFilename)
+    public function __construct($em, ClassMetadata $class)
     {
+        parent::__construct($em, $class);
         $normalizers = [
             new DateDenormalizer(),
             new ObjectNormalizer(null, null, null, new PhpDocExtractor()),
@@ -54,76 +52,36 @@ class ReferenceManger
         ];
 
         $this->serializer = new Serializer($normalizers, $encoders);
-        $this->storageFilename = $storageFilename;
-    }
-
-    /**
-     * @return Reference[]
-     */
-    public function findAll()
-    {
-        $references = $this->getReferences();
-
-        return $references;
-    }
-
-    public function find($id)
-    {
-        $references = $this->getReferences();
-
-        foreach ($references as $reference) {
-            if ($reference->id === $id) {
-                return $reference;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * @return Reference[]
-     */
-    public function getReferences()
-    {
-        if ($this->references === null) {
-            $data = file_get_contents($this->storageFilename);
-            /** @var References $references */
-            $this->references = $this->serializer->deserialize($data, 'AppBundle\\Entity\\References', 'yaml');
-        }
-
-        return $this->references->getReferences();
     }
 
     public function persist(Reference $reference)
     {
-        /** @var ArrayCollection $references */
-        $references = $this->getReferences();
-        // Has object are always passed by reference
-        if ($references->contains($reference)) {
-            return true;
-        }
-
-        return $references->add($reference);
+        $this->_em->persist($reference);
+        $this->_em->flush();
     }
 
     public function remove(Reference $reference)
     {
-        /** @var ArrayCollection $references */
-        $references = $this->getReferences();
-
-        return $references->removeElement($reference);
+        $this->_em->remove($reference);
+        $this->_em->flush();
     }
 
-    public function flush()
+    public function loadFromFile($filename)
     {
-        if ($this->references !== null) {
-            $out = $this->serializer->serialize($this->references, 'yaml');
-            file_put_contents($this->storageFilename, $out);
+        $data = file_get_contents($filename);
+        /** @var References $references */
+        $references = $this->serializer->deserialize($data, 'AppBundle\\Entity\\References', 'yaml');
+        foreach ($references->getReferences() as $reference) {
+            $this->_em->persist($reference);
         }
+        $this->_em->flush();
     }
 
-    public function clear()
+    public function dumpYAML()
     {
-        $this->references = null;
+        $references = $this->findAll();
+        $references = new References($references);
+
+        return $this->serializer->serialize($references, 'yaml');
     }
 }
