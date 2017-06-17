@@ -47,7 +47,7 @@ class ReferenceManger
                 null,
                 null,
                 [
-                    //'yaml_flags'  => Yaml::PARSE_OBJECT_FOR_MAP,
+                    'yaml_flags'  => Yaml::PARSE_OBJECT_FOR_MAP,
                     'yaml_inline' => 2,
                 ]
             ),
