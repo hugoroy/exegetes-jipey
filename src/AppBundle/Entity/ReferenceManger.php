@@ -84,4 +84,9 @@ class ReferenceManger extends EntityRepository
 
         return $this->serializer->serialize($references, 'yaml');
     }
+
+    public function serialize($data, $format)
+    {
+        return $this->serializer->serialize($data, $format);
+    }
 }

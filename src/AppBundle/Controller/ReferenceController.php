@@ -56,9 +56,36 @@ class ReferenceController extends Controller
     /**
      * @Route("/{id}.{_format}", name="show", defaults={"_format": "html"}, requirements={"format": "html|yml|yaml|md"})
      */
-    public function showAction(Request $request)
+    public function showAction(Request $request, $id)
     {
+        $referenceManager = $this->get('doctrine.orm.entity_manager')
+            ->getRepository('AppBundle:Reference');
+        $reference = $referenceManager->find($id);
 
+        if (!$reference) {
+            throw $this->createNotFoundException();
+        }
+
+        $format = $request->get("_format");
+        switch ($format) {
+            case 'yml':
+            case 'yaml':
+                $yaml = $referenceManager->serialize([$reference], 'yaml');
+
+                return new Response(
+                    $yaml,
+                    Response::HTTP_OK,
+                    ['Content-Type' => 'application/yaml']
+                );
+                break;
+            default:
+                return $this->render(
+                    ':reference:show.html.twig',
+                    [
+                        'reference' => $reference,
+                    ]
+                );
+        }
     }
 
     /**

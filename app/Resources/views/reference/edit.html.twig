@@ -3,7 +3,7 @@
 {% block body %}
     <div class="row">
         <div class="col-md-6">
-            {#{{ form(form) }}#}
+            <h3>Édition de la référence <span class="text-info"><em>{{ reference.id }}</em></span></h3>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <div class="form-group">
@@ -19,6 +19,26 @@
             </div>
             {{ form_end(form) }}
         </div>
+        <div class="col-md-6">
+            <h3>Html</h3>
+            <p><a href="{{ url('show', {'id': reference.id, '_format': 'html'}) }}">{{ url('show', {'id': reference.id, '_format': 'html'}) }}</a></p>
+            <pre>{{ render(controller('AppBundle:Reference:show', {'id': reference.id}))|escape('html') }}</pre>
+            <p>{{ render(controller('AppBundle:Reference:show', {'id': reference.id})) }}</p>
+        </div>
+        <div class="col-md-6">
+            <h3>YAML</h3>
+            <p><a href="{{ url('show', {'id': reference.id, '_format': 'yaml'}) }}">{{ url('show', {'id': reference.id, '_format': 'yaml'}) }}</a></p>
+            <pre>{{ render(controller('AppBundle:Reference:show', {'id': reference.id, '_format': 'yaml'})) }}</pre>
+        </div>
+        <div class="col-md-6">
+            <h3>Pandoc/Markdown</h3>
+            <p>Pour citer cette référence dans un document pandoc/markdown, insérer :
+            <pre>@cedhEkinRecevab</pre>
+            ou par exemple
+            <pre>@cedhEkinRecevab, point 5.</pre>
+            Pour plus d'infos, voir <a href="http://pandoc.org/MANUAL.html#citations">http://pandoc.org/MANUAL.html#citations</a>
+            </p>
+        </div>
 
         <div class="col-md-12">
             <a href="{{ path('list') }}" class="btn btn-default">Retour</a>
@@ -32,7 +52,7 @@
             e.preventDefault();
 
             var id = $(this).data('id');
-            if (window.confirm("Êtes vous sur de vouloir supprimer référence '"+id+"' ?")) {
+            if (window.confirm("Êtes vous sur de vouloir supprimer référence '" + id + "' ?")) {
                 $.ajax('{{ path('delete', {'id': reference.id}) }}', {
                     method: 'DELETE'
                 }).done(function (response) {

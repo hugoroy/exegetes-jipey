@@ -1,0 +1,2 @@
+{{ reference.authority }}, {% if reference.section %}{{ reference.section }}, {% endif %}{{ reference.issued|localizeddate('medium', 'none') }},
+<em>{{ reference.title }}</em>, {% if reference.URL %}<a  href="{{ reference.URL }}">{{ reference.number }}</a>{% else %}{{ reference.number }}{% endif %}
