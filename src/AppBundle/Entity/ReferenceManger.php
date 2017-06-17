@@ -71,7 +71,7 @@ class ReferenceManger extends EntityRepository
         $data = file_get_contents($filename);
         /** @var References $references */
         $references = $this->serializer->deserialize($data, 'AppBundle\\Entity\\References', 'yaml');
-        foreach ($references->getReferences() as $reference) {
+        foreach ($references->references as $reference) {
             $this->_em->persist($reference);
         }
         $this->_em->flush();

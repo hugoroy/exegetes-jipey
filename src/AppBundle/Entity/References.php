@@ -18,10 +18,10 @@ class References
 
     /**
      * References constructor.
-     * @param \AppBundle\Entity\Reference[] $references
+     * @param \AppBundle\Entity\Reference[] $ref
      */
-    public function __construct(array $references)
+    public function __construct($ref = [])
     {
-        $this->references = $references;
+        $this->references = $ref;
     }
 }
